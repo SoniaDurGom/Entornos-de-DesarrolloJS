@@ -121,14 +121,15 @@ console.log(aleatorio);
 console.log("-----EJ11: Generar un array de 10 num aleatorios entre 0 y 100, sacando el maximo y el minimo-----");
 // genera un array de 10 números aleatorios del 0 al 100 y muestra el máximo y mínimo
 var arrayNumAleatorio= new Array(10);
-var max=0;
-var min=0;
+//var arrayNumAleatorio= []; //Lo crea vacio.
+var max;
+var min;
 for (let index = 0; index < arrayNumAleatorio.length; index++) {
      arrayNumAleatorio[index]= (Math.random() * 101 + 0).toFixed(2);
      console.log(arrayNumAleatorio[index]);
-     if(min==0){
+     if(index==0){
          min=arrayNumAleatorio[index];
-         
+         max=arrayNumAleatorio[index];
      }
      if(max<arrayNumAleatorio[index]){
          max=arrayNumAleatorio[index];
@@ -149,6 +150,7 @@ for (let index = 0; index < arrayNumAleatorio.length; index++) {
 }
 var minimo= Math.min(...arrayNumAleatorio); //Sin los puntos suspensivos, devuelve NAN
 var maximo= Math.max(...arrayNumAleatorio);
+//var maximo= Math.max.apply(null,arrayNumAleatorio); //Otra manera
 console.log("El numero más grande ha sido: "+ maximo + " El numero más pequeños ha sido: "+minimo);
 
 
@@ -163,20 +165,22 @@ console.log(cadena1.toLowerCase());
 
 //reemplazar Pascal por Javascript en la frase "Pascal es un lenguaje de programación moderno"
 console.log("--------EJ replace------------");
-var remplazo= "Pascal es un lenguaje de programación moderno";
+var remplazo= "Pascal es un lenguaje de programación moderno. Pascal";
 console.log(remplazo);
-console.log(remplazo.replace("Pascal","JavaSacript"));
+console.log(remplazo.replace("Pascal","JavaSacript")); //Solo funciona con el primer valor que coincide con el introducido
+console.log(remplazo.replaceAll("Pascal","JavaSacript")); //Esta remplaza todos.
 
 //crear una variable con frase/cadena de caracteres y comprobar la longitud
 console.log("-------------EJ long()----------");
-var long="Pascal es un lenguaje de programación moderno";
+var long="Pascal es un lenguaje de programación moderno.";
 console.log(long.length);
 
 //eliminar "script" de la palabra Javascript con el método substr
 console.log("-------EJ substring--------");
 var long="JavaScript";
-console.log(long.substring(0,4));
-
+console.log(long.substring(0,4)); //substr a punto de estar obsoleto
+var subs=long.replace(long.substring(4,10),"") //otra manera
+console.log(subs)
 //comprueba si la frase "Espero que esto me sirva para algo" contiene la palabra "algo"
 console.log("-------EJ: icludes ---------");
 var contener= "Espero que esto me sirva para algo";
